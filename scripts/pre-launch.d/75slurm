@@ -1,0 +1,20 @@
+if [ -n "$SLURMGID" ]; then
+    groupmod -g $SLURMGID slurm
+fi
+
+if [ -n "$SLURMUID" ]; then
+    usermod -u $SLURMUID slurm
+fi
+
+if [ -n "$MUNGEGID" ]; then
+    groupmod -g $MUNGEGID munge
+fi
+
+if [ -n "$MUNGEUID" ]; then
+    usermod -u $MUNGEUID munge
+fi
+
+chown -R slurm:slurm /var/spool/slurmctld /var/spool/slurmd /var/run/slurm /var/log/slurm
+
+# This is allowed to fail in (probable) case it is mounted
+chown -R munge:munge /run/munge /var/lib/munge /var/log/munge /etc/munge/munge.key || true
