@@ -17,7 +17,7 @@ ENV SLURMGID='992' \
     SLURMUID='992' \
     MUNGEGID='991' \
     MUNGEUID='991' \
-    DRMAA_LIB_DIR='/etc/slurm-llnl/drmaa/lib/libdrmaa.so.1'
+    DRMAA_LIBRARY_PATH='/etc/slurm-llnl/drmaa/lib/libdrmaa.so.1'
 
 RUN mkdir -p /var/spool/slurmctld /var/spool/slurmd /var/run/slurm /var/log/slurm /run/munge && \
     chown -R slurm:slurm /var/spool/slurmctld /var/spool/slurmd /var/run/slurm /var/log/slurm && \
