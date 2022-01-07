@@ -26,4 +26,4 @@ RUN mkdir -p /var/spool/slurmctld /var/spool/slurmd /var/run/slurm /var/log/slur
 ADD entrypoint.sh /
 ADD /scripts/ /scripts/
 
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
