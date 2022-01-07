@@ -15,7 +15,7 @@ MUNGEUID: '991' # the uid of the munge user (should be the same as on your slurm
 
 ## Using DRMAA
 
-To use DRMAA, you need to pay attention to several things (only tested with SGE and Slurm):
+To use DRMAA, you need to pay attention to several things:
 
 ### Slurm
 
