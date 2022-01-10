@@ -16,3 +16,5 @@ function run_scripts () {
 
 run_scripts pre-launch
 /etc/init.d/munge start
+
+exec "$@"

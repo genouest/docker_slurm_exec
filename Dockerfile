@@ -27,3 +27,5 @@ ADD entrypoint.sh /
 ADD /scripts/ /scripts/
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["/bin/bash"]
