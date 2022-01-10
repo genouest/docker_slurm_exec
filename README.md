@@ -11,6 +11,7 @@ SLURMGID: '992' # the gid of the slurm group (should be the same as on your slur
 SLURMUID: '992' # the uid of the slurm user (should be the same as on your slurm cluster)
 MUNGEGID: '991' # the gid of the munge group (should be the same as on your slurm cluster)
 MUNGEUID: '991' # the uid of the munge user (should be the same as on your slurm cluster)
+DRMAA_LIBRARY_PATH: '/etc/slurm-llnl/drmaa/lib/libdrmaa.so.1'
 ```
 
 ## Using DRMAA
@@ -27,8 +28,10 @@ If you're using Slurm, you should set the `DRMAA_METHOD` environment variable to
 
 #### Mounts
 
+Make sure that the folder from where the jobs are launched is available on all cluster nodes!
+
 You need to mount the slurm configuration files from your cluster to the /etc/slurm-llnl/ directory.
-You also need to mount the libdrmaa.so library to $DRMAA_LIB_DIR directory (/etc/slurm-llnl/drmaa/ by default).
+You also need to mount the libdrmaa.so.1 library to $DRMAA_LIBRARY_PATH path (/etc/slurm-llnl/drmaa/lib/libdrmaa.so.1 by default).
 And you need to mount the munge conf directory which stores the munge key specific to your cluster.
 All this should look something like that:
 
