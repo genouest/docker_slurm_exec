@@ -16,5 +16,3 @@ function run_scripts () {
 
 run_scripts pre-launch
 /etc/init.d/munge start
-
-exit 1
