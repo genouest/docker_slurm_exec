@@ -20,7 +20,7 @@ To use DRMAA, you need to pay attention to several things:
 
 ### Slurm
 
-Slurm libraries are installed in version 18.08 (from Debian Buster). It should match the version installed on your cluster to work properly.
+Slurm libraries are installed in version 20.02 (from Debian Buster). It should match the version installed on your cluster to work properly.
 
 #### Environment variables
 

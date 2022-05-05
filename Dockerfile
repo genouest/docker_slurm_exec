@@ -3,9 +3,10 @@ FROM python:3.9-buster
 MAINTAINER Mateo Boudet <mateo.boudet@inrae.fr>
 
 # Install packages and PHP-extensions
-RUN apt-get -q update \
+RUN echo "deb https://apt.genouest.org/ buster main" > /etc/apt/sources.list.d/slurm_genouest.list \
+ && apt-get -q update \
  && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install \
-     git libslurm33 libslurmdb33 slurm-client munge \
+     git libslurm35 libslurmdb35 slurm-client munge \
  && rm -rf /var/lib/apt/lists/*
 
 # Some env var for slurm only
