@@ -2,6 +2,8 @@ FROM python:3.9-buster
 
 MAINTAINER Mateo Boudet <mateo.boudet@inrae.fr>
 
+ADD apt_genouest_priority /etc/apt/preferences.d/apt_genouest_priority
+
 # Install packages and PHP-extensions
 RUN echo "deb https://apt.genouest.org/ buster main" > /etc/apt/sources.list.d/slurm_genouest.list \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 64D3DCC02B3AC23A8D96059FC41FF1AADA6E6518  \
