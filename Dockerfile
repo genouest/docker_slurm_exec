@@ -4,7 +4,7 @@ MAINTAINER Mateo Boudet <mateo.boudet@inrae.fr>
 
 # Install packages and PHP-extensions
 RUN echo "deb https://apt.genouest.org/ buster main" > /etc/apt/sources.list.d/slurm_genouest.list \
- && wget -qO - https://apt.genouest.org/dists/buster/Release.gpg | apt-key add - \
+ && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 64D3DCC02B3AC23A8D96059FC41FF1AADA6E6518  \
  && apt-get -q update \
  && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install \
      git libslurm35 libslurmdb35 slurm-client munge \
