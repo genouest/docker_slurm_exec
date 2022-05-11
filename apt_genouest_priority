@@ -1,0 +1,3 @@
+Package: *
+Pin: origin apt.genouest.org
+Pin-Priority: 1000

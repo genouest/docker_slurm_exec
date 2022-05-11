@@ -2,10 +2,14 @@ FROM python:3.9-buster
 
 MAINTAINER Mateo Boudet <mateo.boudet@inrae.fr>
 
+ADD apt_genouest_priority /etc/apt/preferences.d/apt_genouest_priority
+
 # Install packages and PHP-extensions
-RUN apt-get -q update \
+RUN echo "deb https://apt.genouest.org/ buster main" > /etc/apt/sources.list.d/slurm_genouest.list \
+ && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 64D3DCC02B3AC23A8D96059FC41FF1AADA6E6518  \
+ && apt-get -q update \
  && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install \
-     git libslurm33 libslurmdb33 slurm-client munge \
+     git libslurm35 slurm-client munge \
  && rm -rf /var/lib/apt/lists/*
 
 # Some env var for slurm only
@@ -17,7 +21,7 @@ ENV SLURMGID='992' \
     SLURMUID='992' \
     MUNGEGID='991' \
     MUNGEUID='991' \
-    DRMAA_LIBRARY_PATH='/etc/slurm-llnl/drmaa/lib/libdrmaa.so.1'
+    DRMAA_LIBRARY_PATH='/etc/slurm/drmaa/lib/libdrmaa.so.1'
 
 RUN mkdir -p /var/spool/slurmctld /var/spool/slurmd /var/run/slurm /var/log/slurm /run/munge && \
     chown -R slurm:slurm /var/spool/slurmctld /var/spool/slurmd /var/run/slurm /var/log/slurm && \
