@@ -9,7 +9,7 @@ RUN echo "deb https://apt.genouest.org/ buster main" > /etc/apt/sources.list.d/s
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 64D3DCC02B3AC23A8D96059FC41FF1AADA6E6518  \
  && apt-get -q update \
  && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install \
-     git libslurm35 slurm-client munge locales locales-all \
+     git libslurm37 slurm-client munge locales locales-all \
  && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=en_US.UTF-8
