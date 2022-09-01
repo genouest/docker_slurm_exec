@@ -5,5 +5,5 @@ fi
 
 if [ -n "$UID" ]; then
 	UIDoption="--uid $UID"
-	id -u $RUN_USER &> /dev/null || useradd --create-home --no-user-group $UIDoption $GIDoption $RUN_USER
+	id -u $RUN_USER &> /dev/null || useradd -d /tmp/$RUN_USER --create-home --no-user-group $UIDoption $GIDoption $RUN_USER
 fi
