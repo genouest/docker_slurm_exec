@@ -20,7 +20,8 @@ RUN sed -i -e "s/# $LANG.*/$LANG UTF-8/" /etc/locale.gen && \
 # Some env var for slurm only
 ADD requirements.txt /tmp/requirements.txt
 
-RUN pip install -r /tmp/requirements.txt
+RUN pip install -U pip setuptools nose build &&
+    pip install -r /tmp/requirements.txt
 
 ENV SLURMGID='992' \
     SLURMUID='992' \
