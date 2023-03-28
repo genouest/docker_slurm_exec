@@ -5,8 +5,8 @@ MAINTAINER Mateo Boudet <mateo.boudet@inrae.fr>
 ADD apt_genouest_priority /etc/apt/preferences.d/apt_genouest_priority
 
 # Install packages and PHP-extensions
+# && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 64D3DCC02B3AC23A8D96059FC41FF1AADA6E6518  \
 RUN echo "deb [trusted=yes] https://apt.genouest.org/ buster main" > /etc/apt/sources.list.d/slurm_genouest.list \
- && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 64D3DCC02B3AC23A8D96059FC41FF1AADA6E6518  \
  && apt-get -q update \
  && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install \
      git libslurm37 slurm-client munge locales locales-all \
