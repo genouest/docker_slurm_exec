@@ -3,10 +3,9 @@ if [ -n "$GID" ]; then
 	getent group $RUN_GROUP &> /dev/null || groupadd $GIDoption $RUN_GROUP
 fi
 
-$otherGIDoption=""
 if [ -n "$OTHER_GID" ]; then
-    $otherGIDoption="--groups $OTHER_GID"
-	getent group $OTHER_RUN_GROUP &> /dev/null || groupadd --gid $OTHER_GID $OTHER_RUN_GROUP
+    otherGIDoption="--groups $OTHER_GID"
+    getent group $OTHER_RUN_GROUP &> /dev/null || groupadd --gid $OTHER_GID $OTHER_RUN_GROUP
 fi
 
 if [ -n "$UID" ]; then
