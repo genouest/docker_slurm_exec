@@ -54,6 +54,6 @@ UID: the uid of the user
 GID: the gid of the user
 RUN_USER: the username of the user
 RUN_GROUP: the group of the user
-OTHER_GID: a supplementary gid which the user is also a member of
-OTHER_RUN_GROUP: a supplementary group which the user is also a member of
+OTHER_GID: list of supplementary gid (comma separated) which the user is also a member of
+OTHER_RUN_GROUP: list of supplementary group (comma separated) which the user is also a member of. The order must match the order used for OTHER_GID.
 ```
