@@ -3,7 +3,19 @@ if [ -n "$GID" ]; then
 	getent group $RUN_GROUP &> /dev/null || groupadd $GIDoption $RUN_GROUP
 fi
 
+if [ -n "$OTHER_GID" ]; then
+    IFS=',' read -ra OTHER_GID_ARRAY  <<< "$OTHER_GID"
+    IFS=',' read -ra OTHER_RUN_GROUP_ARRAY  <<< "$OTHER_RUN_GROUP"
+    length=${#OTHER_GID_ARRAY[@]}
+    groups="--groups "
+    for (( i=0; i<$length; i++ )); do
+        getent group ${OTHER_RUN_GROUP_ARRAY[i]} &> /dev/null || groupadd --gid ${OTHER_GID_ARRAY[i]} ${OTHER_RUN_GROUP_ARRAY[i]}
+        groups+="${OTHER_GID_ARRAY[i]},"
+    done
+    otherGIDoption=${groups::-1}
+fi
+
 if [ -n "$UID" ]; then
 	UIDoption="--uid $UID"
-	id -u $RUN_USER &> /dev/null || useradd -d /tmp/$RUN_USER --create-home --no-user-group $UIDoption $GIDoption $RUN_USER
+	id -u $RUN_USER &> /dev/null || useradd -d /tmp/$RUN_USER --create-home --no-user-group $UIDoption $GIDoption $otherGIDoption $RUN_USER
 fi
