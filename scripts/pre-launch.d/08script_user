@@ -9,8 +9,8 @@ if [ -n "$OTHER_GID" ]; then
     length=${#OTHER_GID_ARRAY[@]}
     GROUPS="--groups "
     for (( i=0; i<$length; i++ )); do
-        getent group $OTHER_RUN_GROUP_ARRAY[i] &> /dev/null || groupadd --gid $OTHER_GID_ARRAY[i] $OTHER_RUN_GROUP_ARRAY[i]
-        GROUPS+="$OTHER_GID_ARRAY[i],"
+        getent group ${OTHER_RUN_GROUP_ARRAY[i]} &> /dev/null || groupadd --gid ${OTHER_GID_ARRAY[i]} ${OTHER_RUN_GROUP_ARRAY[i]}
+        GROUPS+="${OTHER_GID_ARRAY[i]},"
     done
     otherGIDoption=${GROUPS::-1}
 fi
