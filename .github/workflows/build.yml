@@ -3,6 +3,7 @@ name: Build and Push image
 on:
   push:
     branches: [ "master" ]
+    tags: [ '*' ]
 
 permissions:
   contents: read
